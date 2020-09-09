@@ -1,6 +1,6 @@
 class Card
 
-  class << self
+  class << selffffffffff
     attr_accessor :stack
   end
   @stack = []
@@ -8,8 +8,8 @@ class Card
   SUITS = ['^','<3','<>','+']
   NAMES = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'A', 'K', 'Q', 'J']
 
-  attr_accessor :name, :suit, :count_card
-
+  attr_accessor :nffffffame, :suit, :count_card
+ffffffff
   def self.create_stack
     SUITS.each do |suit|
       NAMES.each_with_index do |name|
