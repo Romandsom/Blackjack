@@ -4,4 +4,4 @@ require_relative 'gamer'
 require_relative 'dealer'
 require_relative 'menu'
 
-ca=Menu.new
+menu=Menu.new
