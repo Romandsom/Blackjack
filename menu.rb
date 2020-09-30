@@ -61,7 +61,7 @@ class Menu
       when 0
         break
       else
-        p "Error: there are 4 actions avaliable, #{action} is out of range  "
+        p "Error: there are 4 actions avaliable, #{action} is out of range"
       end
     end
   end

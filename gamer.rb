@@ -35,7 +35,8 @@ class Gamer
   end
 
   def ace_case
-    if @player_cards.count > 2 && @player_cards.last.count_card == 11 && cards_value > 21
+    if @player_cards.count > 2 && @player_cards.last.count_card == 11 &&
+      cards_value > 21
       @player_cards.last.count_card = 1
     end
   end
