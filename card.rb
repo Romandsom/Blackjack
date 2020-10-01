@@ -10,23 +10,25 @@ class Card
 
   attr_accessor :name, :suit, :count_card
 
-  def self.create_stack
-    SUITS.each do |suit|
-      NAMES.each_with_index do |name|
-        @stack << Card.new(suit, name)
+  class << self
+    def create_stack
+      SUITS.each do |suit|
+        NAMES.each_with_index do |name|
+          @stack << Card.new(suit, name)
+        end
       end
+      self.add_counts
     end
-    self.add_counts
-  end
 
-  def self.add_counts
-    @stack.each do |card|
-      if card.name.is_a? Integer
-        card.count_card = card.name
-      elsif ['K', 'Q', 'J'].include? card.name
-        card.count_card = 10
-      else
-        card.count_card = 11
+    def add_counts
+      @stack.each do |card|
+        if card.name.is_a? Integer
+          card.count_card = card.name
+        elsif ['K', 'Q', 'J'].include? card.name
+          card.count_card = 10
+        else
+          card.count_card = 11
+        end
       end
     end
   end
@@ -36,4 +38,4 @@ class Card
     @suit = suit
     @count_card = count_card
   end
-end  
+end
