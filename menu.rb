@@ -1,9 +1,9 @@
 class Menu
   def initialize
-    p "Please, enter your name"
+    p 'Please, enter your name'
     player_name = gets.chomp
     while player_name.empty?
-      puts "Name can not be empty. Please, enter your name"
+      puts 'Name can not be empty. Please, enter your name'
       player_name = gets.chomp
     end
     @game = Game.new(player_name)
@@ -15,14 +15,14 @@ class Menu
   end
 
   def new_game_notification
-    p " * * * * * New game! * * * * * "
-  end  
+    p ' * * * * * New game! * * * * * '
+  end
 
   def report(number)
     puts ' '
     puts "#{@game.gamers[number].player_name} cards are:"
-    @game.gamers[number].player_cards.each do|card|
-      print "#{"  " + card.name.to_s + card.suit.to_s}"
+    @game.gamers[number].player_cards.each do |card|
+      print "  #{card.name}#{card.suit}".to_s
     end
     puts
     puts "#{@game.gamers[number].player_name} count is #{@game.gamers[number].count}"
@@ -33,7 +33,7 @@ class Menu
   def dealer_report
     puts ''
     puts 'Dealer cards are:'
-    @game.gamers[0].cards_on_hand.times {print " *"}
+    @game.gamers[0].cards_on_hand.times { print ' *' }
   end
 
   def open
@@ -63,8 +63,6 @@ class Menu
       dealer_report
       report(1)
       player_menu
-    else
-      return
     end
   end
 

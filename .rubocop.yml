@@ -1,0 +1,39 @@
+AllCops:
+  Include:
+    - '**/*.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 30
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/BlockLength:
+  Max: 50
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
