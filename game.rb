@@ -72,4 +72,14 @@ class Game
       puts "#{player.player_name} now has #{player.cash} dollars"
     end
   end
+
+  def open
+    i = 0
+    until i == gamers.count
+      report(i)
+      i += 1
+    end
+    who_win_count
+    game_result
+  end
 end

@@ -11,16 +11,6 @@ class Menu
     player_menu
   end
 
-  def open
-    i = 0
-    until i == @game.gamers.count
-      @game.report(i)
-      i += 1
-    end
-    @game.who_win_count
-    @game.game_result
-  end
-
   def new_game_ask
     puts ''
     puts 'Press Y for another game or anykey to exit'
@@ -53,10 +43,10 @@ class Menu
         @game.report(1)
       when 2
         @game.gamers[1].get_card
-        open
+        @game.open
         new_game_ask
       when 3
-        open
+        @game.open
         new_game_ask
       when 0
         break
