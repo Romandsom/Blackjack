@@ -9,8 +9,7 @@ class Menu
     @game = Game.new(player_name)
     new_game_notification
     @game.new_game
-    dealer_report
-    report(1)
+    players_report
     player_menu
   end
 
@@ -48,6 +47,11 @@ class Menu
     @game.gamers[0].cards_on_hand.times { print ' *' }
   end
 
+  def players_report
+    dealer_report
+    report(1)
+  end
+
   def open
     i = 0
     until i == @game.gamers.count
@@ -73,8 +77,7 @@ class Menu
     if answer == 'Y'
       new_game_notification
       @game.new_game
-      dealer_report
-      report(1)
+      players_report
       player_menu
     end
   end
@@ -91,8 +94,7 @@ class Menu
       case action.to_i
       when 1
         @game.skip
-        dealer_report
-        report(1)
+        players_report
       when 2
         @game.take_card
         open
