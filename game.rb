@@ -21,6 +21,19 @@ class Game
     end
   end
 
+  def skip
+    if gamers[0].cards_on_hand > 2
+      puts 'You already used your skip move in this distribution'
+    else
+      gamers[0].move
+    end
+  end
+
+  def take_card
+    gamers[1].take_card
+    gamers[0].move
+  end
+
   def draw_case
     @array_result = []
     @gamers.each { |gamer| @array_result << gamer.cards_value }
@@ -42,7 +55,7 @@ class Game
       end
       @gamers.each do |gamer|
         if gamer.cards_value == @array_result[0]
-          @winner_name = " #{gamer.player_name} has won!"
+          @winner_name = "#{gamer.player_name} has won!"
           gamer.cash += 20
         end
       end
