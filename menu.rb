@@ -106,10 +106,3 @@ class Menu
     end
   end
 end
-
-def take_card
-  @game.gamers[1].take_card
-  @game.gamers[0].move
-  open
-  new_game_ask
-end
