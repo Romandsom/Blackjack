@@ -18,16 +18,28 @@ class Menu
     p ' * * * * * New game! * * * * * '
   end
 
-  def report(number)
+  def report_cards(number)
     puts ' '
     puts "#{@game.gamers[number].player_name} cards are:"
     @game.gamers[number].player_cards.each do |card|
       print "  #{card.name}#{card.suit}".to_s
     end
+  end
+
+  def report_count(number)
     puts
     puts "#{@game.gamers[number].player_name} count is #{@game.gamers[number].count}"
+  end
+
+  def report_cash(number)
     puts "#{@game.gamers[number].player_name} cash is #{@game.gamers[number].cash}"
     puts ' '
+  end
+
+  def report(number)
+    report_cards(number)
+    report_count(number)
+    report_cash(number)
   end
 
   def dealer_report
@@ -85,7 +97,7 @@ class Menu
         dealer_report
         report(1)
       when 2
-        @game.gamers[1].get_card
+        @game.gamers[1].take_card
         @game.gamers[0].move
         open
         new_game_ask

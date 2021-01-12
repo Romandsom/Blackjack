@@ -1,7 +1,7 @@
 class Dealer < Gamer
   def move
     if cards_value < 17 && cards_on_hand == 2
-      get_card
+      take_card
     else
       p 'Dealer desided that he has enough cards'
     end

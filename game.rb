@@ -5,8 +5,8 @@ class Game
     @gamers = []
     @gamers << Dealer.new('Dealer')
     @gamers << Gamer.new(player_name)
-    @result = []
-    @winner = []
+    @array_result = []
+    @winner_name = String
   end
 
   def new_game
@@ -15,33 +15,38 @@ class Game
     @gamers.each do |player|
       player.cards_on_hand = 0
       player.player_cards = []
-      2.times { player.get_card }
+      2.times { player.take_card }
       player.cash -= 10
       player.two_ace_case
     end
   end
 
-  def counting_cards
-    @result = []
-    @winner = []
-
-    @gamers.each { |gamer| @result << gamer.cards_value }
-    @result = @result.max
-    if @result < 22
-      @gamers.each { |gamer| @winner << gamer if @result == gamer.cards_value }
-    elsif @result > 21
-      @gamers.each { |gamer| @winner << gamer if gamer.cards_value < 22 }
+  def draw_case
+    @array_result = []
+    @gamers.each { |gamer| @array_result << gamer.cards_value }
+    if @array_result.size != @array_result.uniq.size || @array_result.inject(0, :+) > 43
+      @winner_name = 'Its a draw!'
+      @gamers.each { |player| player.cash += 10 }
+    else
+      false
     end
   end
 
   def game_result
-    counting_cards
-    if @winner.count == 2 || @winner.count.zero?
-      @gamers.each { |player| player.cash += 10 }
-      @winner_name = 'Its a draw!'
-    else
-      @winner_name = "#{@winner[0].player_name} won"
-      @winner[0].cash += 20
+    draw_case
+    if draw_case == false
+      min, max = @array_result.minmax
+      if max > 21
+        @array_result.delete(max)
+      else
+        @array_result.delete(min)
+      end
+      @gamers.each do |gamer|
+        if gamer.cards_value == @array_result[0]
+          @winner_name = " #{gamer.player_name} has won!"
+          gamer.cash += 20
+        end
+      end
     end
   end
 end

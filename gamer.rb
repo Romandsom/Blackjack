@@ -15,7 +15,7 @@ class Gamer
     @count
   end
 
-  def get_card
+  def take_card
     @player_cards << Card.stack.pop
     ace_case
     cards_value
