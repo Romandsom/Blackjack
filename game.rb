@@ -33,7 +33,6 @@ class Game
   end
 
   def game_result
-    draw_case
     if draw_case == false
       min, max = @array_result.minmax
       if max > 21

@@ -89,18 +89,9 @@ class Menu
       action = gets.chomp
       case action.to_i
       when 1
-        if @game.gamers[0].cards_on_hand > 2
-          puts 'You already used your skip move in this distribution'
-        else
-          @game.gamers[0].move
-        end
-        dealer_report
-        report(1)
+        skip
       when 2
-        @game.gamers[1].take_card
-        @game.gamers[0].move
-        open
-        new_game_ask
+        take_card
       when 3
         open
         new_game_ask
@@ -111,4 +102,21 @@ class Menu
       end
     end
   end
+end
+
+def skip
+  if @game.gamers[0].cards_on_hand > 2
+    puts 'You already used your skip move in this distribution'
+  else
+    @game.gamers[0].move
+  end
+  dealer_report
+  report(1)
+end
+
+def take_card
+  @game.gamers[1].take_card
+  @game.gamers[0].move
+  open
+  new_game_ask
 end
