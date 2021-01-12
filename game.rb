@@ -22,11 +22,7 @@ class Game
   end
 
   def skip
-    if gamers[0].cards_on_hand > 2
-      puts 'You already used your skip move in this distribution'
-    else
-      gamers[0].move
-    end
+    gamers[0].move
   end
 
   def take_card
@@ -34,10 +30,16 @@ class Game
     gamers[0].move
   end
 
+  def both_too_much
+    @too_much_chek = []
+    @array_result.each { |result| @too_much_chek << result if result > 21 }
+    true if @too_much_chek.size == 2
+  end
+
   def draw_case
     @array_result = []
     @gamers.each { |gamer| @array_result << gamer.cards_value }
-    if @array_result.size != @array_result.uniq.size || @array_result.inject(0, :+) > 43
+    if @array_result.size != @array_result.uniq.size || both_too_much
       @winner_name = 'Its a draw!'
       @gamers.each { |player| player.cash += 10 }
     else
